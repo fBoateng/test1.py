@@ -55,7 +55,6 @@ def factorial(num=int) -> int:
     for i in range(1, num + 1):
         fact = fact * i
 
-
     return fact
 
 
@@ -71,3 +70,31 @@ def any_args(*args):
 any_args(1, 3, 5)
 
 any_args('ball', 'sell', 123)
+
+
+def score(name, level, *scores):
+    n = input('Please enter a name: ')
+    le = input('Please enter a level: ')
+    s = input('Please enter your scores: ')
+    print(n)
+    print(le)
+    print(s)
+
+
+score('Jon', 100, 80, 45, 92, 60)
+
+
+# n = input('Please enter a name: ').title()
+# le = input('Please enter a level: ')
+# s = input('Please enter your scores: ')
+
+
+def score1(name, level, **scores):
+    print('Name: ', name)
+    print('Level: ', level)
+    print('Scores: ', scores)
+    for x, y in scores.items():
+        print(f'{x} Score: {y}')
+
+
+score1(name='Ron', level=1, Maths=6, English=5, History=7)
