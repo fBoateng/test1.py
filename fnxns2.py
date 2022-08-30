@@ -45,7 +45,7 @@ def intro2(message, num_times):
 intro2('Manchester United', 4)
 
 
-def vowels(sentence):
+def vowels(sentence1):
     num_vowels = 0
     for char in sentence:
         if char in 'aeiouAEIOU':
