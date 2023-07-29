@@ -2,8 +2,10 @@ import PySimpleGUI as sg
 import qrcode
 import os
 import PIL
+import random
+import string
 
-# sg.theme('LightGrey2')
+sg.theme('LightGrey2')
 # sg.set_options(font = 'roman 15')
 col_a = [
     [sg.T('Please enter the amount you are purchasing? ')],
@@ -27,7 +29,7 @@ col_c = [
     [sg.CB('Cash', key='-C-', enable_events=True)],
     [sg.CB('Scan and Pay', key='-SAP-', enable_events=True)],
     [sg.Image(key='-IMG-')],
-    [sg.Button('Generate',key='-Generate-', size=25), sg.Button('Gen', key='-litre-')]
+    [sg.Button('Generate', key='-Generate-', size=25), sg.Button('Serial Gen', key='-Serial-')]
 ]
 
 col_d = [
@@ -90,7 +92,7 @@ while True:
                     output = round(float(input_value) * 0.6214, 2)
                     output_string = f'{input_value} km are {output} miles.'
                 # case 'mile to km':
-                # output = round(float(input_value) / 0.6214, 2)
+                # output = round(float(input_value) tt/ 0.6214, 2)
                 # output_string = f'{input_value} mile are {output} km.'
             window['-OUTPUT-'].update(output_string)
 
@@ -98,13 +100,11 @@ while True:
         cde_qr = v['-Input-']
         qr_image_path = qrcode_gen(cde_qr)
         window['-IMG-'].update(filename=qr_image_path)
-    if e == '-litre-':
-        cde_qr1 = v['-SAP-']
+    if e == '-Serial-':
+        serial_code = ''.join(random.choices(string.ascii_letters + string.digits, k=6))
+        print(serial_code)
+        cde_qr1 = serial_code
         qr_image_path = qrcode_gen(cde_qr1)
         window['-IMG-'].update(filename=qr_image_path)
-
-
-
-
 
 window.close()
